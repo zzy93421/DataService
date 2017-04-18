@@ -1,0 +1,2 @@
+# DataService
+用于从Oracle数据库中查询数据并生成excel文件，并自动发邮件给数据服务需求用户。
