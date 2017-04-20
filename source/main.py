@@ -34,6 +34,15 @@ if __name__ == '__main__':
         cur.execute(operate_sql, pr)
         operate_set = cur.fetchall()
         for operate_step in operate_set:
-            print(operate_step)
+            conn1, cur1 = dbinfo.conndb(operate_step[4])
+            cur1.execute(operate_step[2].replace(';', ''))
+            data_set = cur1.fetchall()
+            for data in data_set:
+                if operate_step[3] == "FILENAME":
+                    filename = data[0]
+                elif operate_step[3] == "SHEETNAME":
+                    sheetname = data[0]
+
+                print(data)
 
     dbinfo.disconnalldb()
